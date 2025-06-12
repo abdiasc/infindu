@@ -1,0 +1,556 @@
+body{
+    background-color: #242323;
+    color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+header nav a {
+    color: #fafafa;
+    text-decoration: none;
+}
+header ul li{
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+.container{
+    width: 30%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.container form input{
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.btn-iniciar{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.contenido{
+    padding: 20px;
+    display: flex;
+}
+.contenido .sidebar{
+    width: 20%;
+    background-color: #333;
+    padding: 10px;
+}
+.contenido .panel{
+    width: 80%;
+    background-color: #444;
+    padding: 20px;
+}
+.contenido ul li a{
+    color: #fafafa;
+    text-decoration: none;
+}
+
+.form-curso{
+    width: 50%;
+    padding: 20px;
+    background-color: #555;
+    border-radius: 10px;
+}
+.form-curso form input{
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.form-curso form textarea{
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100px;
+}
+.form-curso form button{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.lista-cursos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-curso {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #fafafa;
+    width: 30%;
+    color: #333;
+}
+
+.card-curso h4 {
+    margin-top: 0;
+}
+
+.img-portada {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.btn.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+
+/* Sidebar general */
+.sidebar {
+    width: 250px;
+    background-color: #1e1e2f;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Título */
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #f8f8f8;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+/* Bienvenida */
+.sidebar p {
+    margin: 10px 0 20px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Enlaces */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 12px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 15px;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #3b3b5b;
+    color: #fff;
+}
+
+/* Botón "Crear nuevo curso" */
+.btn-iniciar a {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    background-color: #00c896;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-iniciar a:hover {
+    background-color: #00a77d;
+}
+
+
+
+.admin-usuarios {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-usuarios h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.admin-usuarios p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.btn-crear {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-crear:hover {
+    background-color: #218838;
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #353541;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tabla-usuarios th, .tabla-usuarios td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla-usuarios th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.tabla-usuarios tr:hover {
+    background-color: #242222;
+}
+
+.btn {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-editar {
+    background-color: #ffc107;
+}
+
+.btn-editar:hover {
+    background-color: #e0a800;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+.btn-roles {
+    background-color: #17a2b8;
+}
+
+.btn-roles:hover {
+    background-color: #138496;
+}
+
+
+.crear-usuario{
+    color: #1e1e2f;
+}
+
+.crear-usuario form{
+    background-color: #e3e3eb;
+    width: 40%;
+    padding: 20px;
+}
+
+
+/* curso-detalle.css */
+
+
+
+
+/* PANEL PRINCIPAL */
+.panel {
+    flex: 1;
+}
+
+.panel-detalle {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    color: #1e1e2f;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+    display: inline-block;
+    background-color: #eeeeee;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+.btn-volver:hover {
+    background-color: #e0e0e0;
+}
+
+.img-curso-portada{
+    width: 100%;
+}
+
+
+.formulario-leccion{
+    background-color: #1e1e2f;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.formulario-leccion form input{
+    width: 95%;
+    padding: 10px;
+}
+.formulario-leccion form textarea{
+    width: 95%;
+    height: 150px;
+}
+
+.btn-add-clase{
+    margin-top: 10px;
+    background-color: #007bff;
+    padding: 10px;
+    border: none;
+    color: #ffffff;
+}
+.lecciones-curso *{
+    margin: 0px;
+    padding: 0px;
+}
+
+.lecciones-curso{
+    width: 60%;
+    background-color: #1e1e2f;
+    margin-top: 20px;
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 10px;
+    
+}
+
+.lecciones-curso .lista-lecciones .tarjeta-leccion{
+    background-color: #242441;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.lecciones-curso .lista-lecciones .tarjeta-leccion h4{
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.lecciones-curso .lista-lecciones .tarjeta-leccion p{
+    margin-bottom: 15px;
+}
+
+.lecciones-curso .lista-lecciones .tarjeta-leccion .acciones{
+    padding: 10px;
+}
+
+.lecciones-curso .lista-lecciones .tarjeta-leccion .acciones a{
+    background-color: #00a77d;
+    padding: 7px !important;
+    color: #ffffff;
+    border: none;
+    margin-right: 5px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.acciones .btn-detalle{
+    background-color:#4337e0 !important;
+}
+.acciones .btn-editar{
+    background-color:#099275 !important;
+}
+.acciones .btn-eliminar{
+    background-color:#8a0241 !important;
+}
+
+
+.panel-detalle-contenido{
+    display: flex;
+}
+
+.panel-detalle-contenido .portada{
+    width: 70%;
+}
+
+
+.panel-detalle-contenido .detalles{
+    width: 30%;
+    padding: 20px;
+    background-color: #00a77d;
+    color: #ccc;
+    border-radius: 15px;
+}
+
+.img-portada{
+    width: 97%;
+    height: auto;
+    border-radius: 15px;
+}
+.img-portada img{
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.frm-create{
+    background-color: #1e1e2f;
+    padding: 20px;
+    width: 50%;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.frm-create input, .frm-create textarea{
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.frm-create button{
+    background-color: #008537;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.frm-create .btn-cancelar{
+    background-color: #e74c3c;
+    color: #ffffff !important;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.frm-create select{
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+.crear-curso-nuevo{
+    width: 60% !important;
+}
+
+
+.asignar-profesor{
+    background-color: #1e1e2f;
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 90%;
+}
+
+
+.btn-asignar-profesor{
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.seleccionar-profesor{
+    width: 40%;
+    padding: 5px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+.profesor-asignado{
+    background-color: #00a77d;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.profesor-asignado .profesor-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #007bff;
+}
+.profesor-asignado .profesor-avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.profesor-asignado .profesor-datos{
+    flex: 1;
+}
