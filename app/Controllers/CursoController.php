@@ -52,6 +52,34 @@ class CursoController extends Controller {
     }
 
 
+    public function verPublico($id) {
+        if (!is_numeric($id)) {
+            header('Location: /error/403');
+            exit;
+        }
+
+        $curso = Curso::obtenerPorId($id);
+        $lecciones = Leccion::todasPorCurso($id);
+        $profesorAsignado = Curso::obtenerProfesorAsignado($id);
+        $profesorDatos = Profesor::obtenerPorUsuario($profesorAsignado['usuario_id'] ?? null);
+
+        if (!$curso) {
+            header('Location: /error/404');
+            exit;
+        }
+
+        $this->view('cursos/verPublico', [
+            'title' => 'Detalle del Curso',
+            'curso' => $curso,
+            'lecciones' => $lecciones ?? [],
+            'profesorAsignado' => $profesorAsignado ?: null,
+            'profesorDatos' => $profesorDatos ?? null
+        ]);
+    }
+
+
+
+
     public function asignarProfesor() {
             // Suponiendo método POST
             $curso_id = $_POST['curso_id'];

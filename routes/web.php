@@ -20,6 +20,7 @@ $router->get('estudiante', 'EstudianteController@dashboard');
 // 📚 Rutas generales de recursos
 $router->get('users', 'UserController@index');
 $router->get('cursos', 'CursoController@home');
+$router->get('cursos/{id}', 'CursoController@verPublico');
 $router->get('profesores', 'ProfesorController@index');
 $router->get('estudiantes', 'EstudianteController@index');
 

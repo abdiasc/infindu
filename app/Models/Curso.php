@@ -69,7 +69,7 @@ class Curso {
     
 
     public static function asignarProfesor($curso_id, $profesor_id) {
-        $db = \Core\Database::getConnection();
+        $db = Database::getConnection();
         
         // Eliminar asignaciones previas (asumiendo 1 profesor por curso)
         $db->prepare("DELETE FROM profesor_curso WHERE curso_id = ?")->execute([$curso_id]);
@@ -93,9 +93,5 @@ class Curso {
         ");
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-
-    
-
-
 
 }
