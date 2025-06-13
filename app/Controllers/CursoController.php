@@ -8,10 +8,12 @@ use App\Models\User; // Asegúrate de importar el modelo Usuario
 use App\Models\Leccion;
 use App\Models\Profesor; // Asegúrate de importar el modelo Profesor
 
+use App\Middleware\Auth;
 
 class CursoController extends Controller {
     public function index() {
         //$cursos = Curso::obtenerTodos();
+        Auth::requireRole('administrador'); // Asegúrate de que el usuario tenga el rol adecuado
         $cursos = Curso::obtenerTodosConProfesor();
         $this->view('cursos/index', [
             'title' => 'Lista de cursos',
@@ -45,7 +47,6 @@ class CursoController extends Controller {
             'lecciones' => $lecciones ?? [],
             'profesores' => $profesores ?? [],
             'profesorAsignado' => $profesorAsignado ?: null,
-            'profesorDatos' => $profesorDatos,
             'profesorDatos' => $profesorDatos, // Puedes pasar los datos del profesor si es necesario   
         ]);
     }

@@ -539,18 +539,58 @@ header{
     display: flex;
     justify-content: space-between;
 }
-.profesor-asignado .profesor-avatar{
+.profesor-avatar{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
     background-color: #007bff;
 }
-.profesor-asignado .profesor-avatar img{
+.profesor-avatar img{
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 .profesor-asignado .profesor-datos{
     flex: 1;
+}
+.content-avatar{
+    text-align: center;
+}
+.avatar-perfil{
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin: 0px auto;
+}
+.datos-perfil{
+    background-color: #1e1e2f;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+}
+.datos-perfil ul li{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+}
+.container-error{
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+.error-img img{
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+    border-radius: 20px;
 }

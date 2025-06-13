@@ -1,17 +1,29 @@
 <div class="contenido">
     <?php include __DIR__ . '/../partials/sidebar-admin.php'; ?>
+
     <div class="panel">
         <h2>Dashboard de Administración</h2>
 
         <p>En esta sección puedes gestionar los cursos y usuarios del sistema.</p>
 
-        
-
         <h3>Cursos Disponibles</h3>
+
+        <?php
+        // Función para limitar la descripción a 20 palabras
+        function limitarPalabras($texto, $limite = 20) {
+            $palabras = explode(' ', strip_tags($texto));
+            if (count($palabras) > $limite) {
+                return implode(' ', array_slice($palabras, 0, $limite)) . '...';
+            }
+            return $texto;
+        }
+        ?>
 
         <?php if (empty($cursos)): ?>
             <p>No hay cursos registrados aún.</p>
         <?php else: ?>
+            <p>Total de cursos registrados: <strong><?= count($cursos) ?></strong></p>
+
             <div class="lista-cursos">
                 <?php foreach ($cursos as $curso): ?>
                     <div class="card-curso">
@@ -20,7 +32,8 @@
                         <?php endif; ?>
 
                         <h4><?= htmlspecialchars($curso['nombre']) ?></h4>
-                        <p><?= nl2br(htmlspecialchars($curso['descripcion'])) ?></p>
+
+                        <p><?= nl2br(htmlspecialchars(limitarPalabras($curso['descripcion'], 20))) ?></p>
 
                         <ul>
                             <li><strong>Categoría:</strong> <?= htmlspecialchars($curso['categoria']) ?></li>

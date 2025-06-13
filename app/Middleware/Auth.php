@@ -34,7 +34,7 @@ class Auth {
     public static function requireRole($rol) {
         if (!self::check() || !in_array($rol, $_SESSION['usuario_roles'])) {
             http_response_code(403);
-            echo "Acceso denegado";
+            header("Location: /error/403");
             exit;
         }
     }

@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 <div class="contenido">
     <?php include __DIR__ . '/../partials/sidebar-admin.php'; ?>
 
@@ -27,5 +21,4 @@
 
         
     </div>
-</div>
 </div>

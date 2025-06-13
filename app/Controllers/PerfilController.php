@@ -41,7 +41,8 @@ class PerfilController extends Controller {
     }
 
 
-    public function guardar() {
+    public function guardar()
+    {
         Auth::requireLogin();
 
         $usuario_id = $_SESSION['usuario_id'] ?? null;
@@ -51,6 +52,7 @@ class PerfilController extends Controller {
         $fecha_ingreso = $_POST['fecha_ingreso'] ?? null;
         $avatarPath = null;
         $biografia = $_POST['biografia'] ?? null;
+
         // Procesar imagen si se cargó
         if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
             $nombreArchivo = basename($_FILES['avatar']['name']);
@@ -64,7 +66,70 @@ class PerfilController extends Controller {
 
             $rutaFinal = $directorioDestino . $nuevoNombre;
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $rutaFinal)) {
-                // Ruta relativa para guardar en BD
+                // Crear imagen desde archivo
+                list($anchoOriginal, $altoOriginal) = getimagesize($rutaFinal);
+                $lado = min($anchoOriginal, $altoOriginal);
+
+                // Coordenadas para recorte centrado
+                $x = ($anchoOriginal - $lado) / 2;
+                $y = ($altoOriginal - $lado) / 2;
+
+                // Crear imagen original según tipo
+                switch (strtolower($extension)) {
+                    case 'jpg':
+                    case 'jpeg':
+                        $imagenOriginal = imagecreatefromjpeg($rutaFinal);
+                        break;
+                    case 'png':
+                        $imagenOriginal = imagecreatefrompng($rutaFinal);
+                        break;
+                    case 'gif':
+                        $imagenOriginal = imagecreatefromgif($rutaFinal);
+                        break;
+                    default:
+                        unlink($rutaFinal);
+                        die('Formato de imagen no soportado.');
+                }
+
+                // Crear lienzo cuadrado (1:1)
+                $tamanoFinal = 300;
+                $imagenCuadrada = imagecreatetruecolor($tamanoFinal, $tamanoFinal);
+
+                // Activar transparencia si es PNG o GIF
+                if (in_array(strtolower($extension), ['png', 'gif'])) {
+                    imagecolortransparent($imagenCuadrada, imagecolorallocatealpha($imagenCuadrada, 0, 0, 0, 127));
+                    imagealphablending($imagenCuadrada, false);
+                    imagesavealpha($imagenCuadrada, true);
+                }
+
+                // Recortar y redimensionar
+                imagecopyresampled(
+                    $imagenCuadrada, $imagenOriginal,
+                    0, 0,       // destino
+                    $x, $y,     // origen (recorte)
+                    $tamanoFinal, $tamanoFinal,   // tamaño destino
+                    $lado, $lado                 // tamaño origen
+                );
+
+                // Guardar imagen redimensionada
+                switch (strtolower($extension)) {
+                    case 'jpg':
+                    case 'jpeg':
+                        imagejpeg($imagenCuadrada, $rutaFinal, 90);
+                        break;
+                    case 'png':
+                        imagepng($imagenCuadrada, $rutaFinal);
+                        break;
+                    case 'gif':
+                        imagegif($imagenCuadrada, $rutaFinal);
+                        break;
+                }
+
+                // Liberar memoria
+                imagedestroy($imagenOriginal);
+                imagedestroy($imagenCuadrada);
+
+                // Ruta relativa para base de datos
                 $avatarPath = '/uploads/avatars/' . $nuevoNombre;
             }
         }
@@ -91,7 +156,9 @@ class PerfilController extends Controller {
     }
 
 
-    public function guardarEstudiante() {
+
+    public function guardarEstudiante()
+    {
         Auth::requireLogin();
         $usuario_id = $_SESSION['usuario_id'] ?? null;
         $carrera = $_POST['carrera'] ?? '';
@@ -113,7 +180,66 @@ class PerfilController extends Controller {
 
             $rutaFinal = $directorioDestino . $nuevoNombre;
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $rutaFinal)) {
-                $avatarPath = '/uploads/avatars/' . $nuevoNombre; // Ruta relativa
+                // Redimensionar imagen a cuadrado 1:1
+                list($anchoOriginal, $altoOriginal) = getimagesize($rutaFinal);
+                $lado = min($anchoOriginal, $altoOriginal);
+                $x = ($anchoOriginal - $lado) / 2;
+                $y = ($altoOriginal - $lado) / 2;
+
+                // Crear imagen original
+                switch (strtolower($extension)) {
+                    case 'jpg':
+                    case 'jpeg':
+                        $imagenOriginal = imagecreatefromjpeg($rutaFinal);
+                        break;
+                    case 'png':
+                        $imagenOriginal = imagecreatefrompng($rutaFinal);
+                        break;
+                    case 'gif':
+                        $imagenOriginal = imagecreatefromgif($rutaFinal);
+                        break;
+                    default:
+                        unlink($rutaFinal);
+                        die('Formato de imagen no soportado.');
+                }
+
+                $tamanoFinal = 300;
+                $imagenCuadrada = imagecreatetruecolor($tamanoFinal, $tamanoFinal);
+
+                // Soporte para transparencia
+                if (in_array(strtolower($extension), ['png', 'gif'])) {
+                    imagecolortransparent($imagenCuadrada, imagecolorallocatealpha($imagenCuadrada, 0, 0, 0, 127));
+                    imagealphablending($imagenCuadrada, false);
+                    imagesavealpha($imagenCuadrada, true);
+                }
+
+                imagecopyresampled(
+                    $imagenCuadrada, $imagenOriginal,
+                    0, 0,   // destino
+                    $x, $y, // origen
+                    $tamanoFinal, $tamanoFinal,
+                    $lado, $lado
+                );
+
+                // Guardar imagen redimensionada
+                switch (strtolower($extension)) {
+                    case 'jpg':
+                    case 'jpeg':
+                        imagejpeg($imagenCuadrada, $rutaFinal, 90);
+                        break;
+                    case 'png':
+                        imagepng($imagenCuadrada, $rutaFinal);
+                        break;
+                    case 'gif':
+                        imagegif($imagenCuadrada, $rutaFinal);
+                        break;
+                }
+
+                imagedestroy($imagenOriginal);
+                imagedestroy($imagenCuadrada);
+
+                // Ruta relativa para guardar en la BD
+                $avatarPath = '/uploads/avatars/' . $nuevoNombre;
             }
         }
 
@@ -136,7 +262,5 @@ class PerfilController extends Controller {
             'error' => 'La carrera es requerida.'
         ]);
     }
-
-
 }
 

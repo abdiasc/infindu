@@ -76,3 +76,5 @@ $router->post('/perfil/guardar', 'PerfilController@guardar');
 
 $router->get('/perfil/completar_estudiante', 'PerfilController@completarEstudiante');
 $router->post('/perfil/guardar_estudiante', 'PerfilController@guardarEstudiante');
+
+$router->get('/error/403', 'ErrorController@error403');
