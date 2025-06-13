@@ -107,7 +107,7 @@ class AuthController extends Controller {
         }
 
         // Redirigir o mostrar mensaje de éxito
-        header('Location: /admin/users');
+        header('Location: /admin/usuarios');
         exit;
     }
 

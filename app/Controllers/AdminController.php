@@ -78,30 +78,44 @@ class AdminController extends Controller {
         Auth::requireRole('administrador');
         $usuario = User::buscarPorId($id);
         if (!$usuario) {
-            echo "Usuario no encontrado.";
-            return;
+            header('Location: /admin/usuarios');
+            exit;
         }
-        $this->view('admin/editar_usuario', ['usuario' => $usuario]);
+
+        $roles = Rol::obtenerTodos();
+        $rolesUsuario = User::obtenerRoles($id);
+        $this->view('admin/editar_usuario', compact('usuario', 'roles', 'rolesUsuario'));
     }
 
-    public function actualizarUsuario($id) {
+    public function actualizarUsuario() {
         Auth::requireRole('administrador');
 
+        $id = $_POST['id'];
         $nombre = trim($_POST['nombre']);
         $email = trim($_POST['email']);
+        $roles = $_POST['roles'] ?? [];
 
+        // Validaciones básicas
         if ($nombre === '' || $email === '') {
-            $this->view('admin/editar_usuario', ['error' => 'Todos los campos son obligatorios.', 'usuario' => ['id' => $id]]);
-            return;
+            $error = 'Nombre y email son obligatorios.';
+            $usuario = User::buscarPorId($id);
+            $rolesTodos = Rol::obtenerTodos();
+            $rolesUsuario = User::obtenerRoles($id);
+            return $this->view('admin/editar_usuario', compact('usuario', 'rolesTodos', 'rolesUsuario', 'error'));
         }
 
-        $exito = User::actualizar($id, $nombre, $email);
+        // Actualiza nombre y email
+        User::actualizar($id, $nombre, $email);
 
-        if ($exito) {
-            header('Location: /admin/usuarios');
-        } else {
-            $this->view('admin/editar_usuario', ['error' => 'Error al actualizar.', 'usuario' => ['id' => $id]]);
+        // Actualiza roles (puedes hacer que reemplace todos)
+        $db = \Core\Database::getConnection();
+        $db->prepare("DELETE FROM usuario_rol WHERE usuario_id = ?")->execute([$id]);
+        foreach ($roles as $rol_id) {
+            User::asignarRol($id, $rol_id);
         }
+
+        header('Location: /admin/usuarios');
+        exit;
     }
 
     public function eliminarUsuario($id) {

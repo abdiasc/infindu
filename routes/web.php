@@ -31,7 +31,7 @@ $router->get('/admin/usuarios', 'AdminController@usuarios');
 $router->get('/users/crear', 'AdminController@crearUsuario');
 $router->post('/users/crear', 'AdminController@guardarUsuario');
 $router->get('/users/editar/{id}', 'AdminController@editarUsuario');
-$router->post('/users/editar/{id}', 'AdminController@actualizarUsuario');
+$router->post('/users/editar', 'AdminController@actualizarUsuario');
 $router->get('/users/eliminar/{id}', 'AdminController@eliminarUsuario');
 $router->get('/users/roles/{id}', 'AdminController@verRoles');
 
