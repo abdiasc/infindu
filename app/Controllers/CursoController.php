@@ -53,18 +53,16 @@ class CursoController extends Controller {
 
 
     public function verPublico($id) {
-        if (!is_numeric($id)) {
-            header('Location: /error/403');
-            exit;
-        }
 
+       
         $curso = Curso::obtenerPorId($id);
         $lecciones = Leccion::todasPorCurso($id);
+        $profesores = User::obtenerProfesores(); // Lista para asignar
         $profesorAsignado = Curso::obtenerProfesorAsignado($id);
         $profesorDatos = Profesor::obtenerPorUsuario($profesorAsignado['usuario_id'] ?? null);
 
         if (!$curso) {
-            header('Location: /error/404');
+            header('Location: /cursos');
             exit;
         }
 
@@ -72,6 +70,7 @@ class CursoController extends Controller {
             'title' => 'Detalle del Curso',
             'curso' => $curso,
             'lecciones' => $lecciones ?? [],
+            'profesores' => $profesores ?? [],
             'profesorAsignado' => $profesorAsignado ?: null,
             'profesorDatos' => $profesorDatos ?? null
         ]);

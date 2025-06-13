@@ -803,3 +803,76 @@ header{
     height: auto;
     border-radius: 10px;
 }
+
+/* CURSO DETALLE */
+.container-detalle-curso{
+    background-color: #141414;
+    color: #faf7f7;
+    margin-bottom: 10px;
+}
+.slider {
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+  color: white;
+}
+
+.slider-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(7px);
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* opcional: oscurece el fondo */
+  z-index: 1;
+}
+
+.texto-slider {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  display: flex;
+}
+.texto-curso-slider {
+  width: 60%;
+  padding: 20px;
+}
+.slider-image{
+    width: 40%;
+}
+.slider img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.curso-datos-slider p {
+    font-size: 1.2rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+.lecciones-publico{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto !important;
+}
+.lecciones-publico *{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+footer{
+    margin-top: 20px;
+}

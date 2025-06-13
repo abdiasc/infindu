@@ -25,7 +25,7 @@
                     <?= nl2br(htmlspecialchars(limitarPalabras($curso['descripcion'], 10))) ?></p>
                     <small>Creado por: <?= htmlspecialchars($curso['creador']) ?> el <?= htmlspecialchars($curso['fecha_creacion']) ?></small>
                     <div class="acciones">
-                        <a href="/curso/<?= $curso['id'] ?>">Ver curso</a>
+                        <a href="/cursos/<?= $curso['id'] ?>">Ver curso</a>
                     </div>
                         
                 </article>
