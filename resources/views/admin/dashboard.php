@@ -28,9 +28,9 @@
                                 <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
                                 <div class="info-tarjeta">
                                     
-                                    <span><span class="icon-person"> </span><?= htmlspecialchars($curso['creador']) ?></span>
-                                    <span><?= htmlspecialchars($curso['nivel']) ?></span>
-                                    <span><?= htmlspecialchars($curso['categoria']) ?></span>
+                                    <span><span class="icon-person"></span><?= htmlspecialchars($curso['creador']) ?></span>
+                                    <span><span class="icon-equalizer"></span>  <?= htmlspecialchars($curso['nivel']) ?></span>
+                                    <span><span class="icon-content_copy"></span> <?= htmlspecialchars($curso['categoria']) ?></span>
                                     
                                 </div>
                         
@@ -50,8 +50,8 @@
                             <hr>
                             <div class="acciones">
                                 <a class="btn-ver" href="/admin/curso/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-text_snippet"></span> Ver Curso</a>
-                                <a class="btn-editar" href="/admin/curso/editar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-edit"></span> Editar</a>
-                                <a class="btn-eliminar" href="/admin/curso/eliminar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-delete"></span> Eliminar</a>      
+                                <a class="btn-editar-curso" href="/admin/curso/editar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-edit"></span> Editar</a>
+                                <a class="btn-eliminar-curso" href="/admin/curso/eliminar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-delete"></span> Eliminar</a>      
                             </div>
                             <!--<p><?= nl2br(htmlspecialchars(limitarPalabras($curso['descripcion'], 20))) ?></p> -->
                         </div>

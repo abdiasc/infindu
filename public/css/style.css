@@ -540,11 +540,12 @@ header{
     justify-content: space-between;
 }
 .profesor-avatar{
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    margin-right: 10px;
-    background-color: #007bff;
+    margin: 10px;
+    background-color: #01162c54;
+    padding: 5px;
 }
 .profesor-avatar img{
     width: 100%;
@@ -714,7 +715,7 @@ header{
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 16px;
 }
 .btn-agregar-leccion{
     background-color: #75015c;
@@ -729,4 +730,45 @@ header{
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
+    padding: 5px 5px;
+}
+.info-tarjeta span span{
+    background-color: #f0f0f0;
+    padding: 2px  3px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.tarjetas-cursos{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+.btn-editar-curso{
+    background-color: #ffc107;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+  }  
+.btn-eliminar-curso{
+    background-color: #dc3545;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.profesor-datos{
+    padding:10px 20px;
+}
+.profesor-datos h4{
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    border-bottom: #007bff 5px solid;
+    padding-bottom: 5px;
 }

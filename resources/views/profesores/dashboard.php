@@ -15,31 +15,34 @@
 
             <div class="cursos-asignados">
                 <h2>Cursos Asignados</h2>
-                <?php if (!empty($cursosAsignados)): ?>
+                <div class="tarjetas-cursos">
+                    <?php if (!empty($cursosAsignados)): ?>
                     <?php foreach ($cursosAsignados as $curso): ?>
-                    <div class="curso-tarjeta">
-                        <div class="tarjeta-head">
-                            <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
-                            <p><?= htmlspecialchars($curso['nivel']) ?></p>
-                            <img src="/public/<?= htmlspecialchars($curso['imagen_portada']) ?>" alt="Portada" class="img-curso-portada">
+                        <div class="curso-tarjeta">
+                            <div class="tarjeta-head">
+                                <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
+                                <p><?= htmlspecialchars($curso['nivel']) ?></p>
+                                <img src="/public/<?= htmlspecialchars($curso['imagen_portada']) ?>" alt="Portada" class="img-curso-portada">
+                            </div>
+                            <div class="tarjeta-body">
+                                <p><strong><span class="icon-calendar_today"> </span>Inicio </strong> <small class="fecha-inicio"><?= htmlspecialchars($curso['fecha_inicio']) ?></small> </p>
+                                <p><strong><span class="icon-date_range"> </span>Fin </strong> <small class="fecha-fin"><?= htmlspecialchars($curso['fecha_fin']) ?></small></p>
+                                <p><strong><span class="icon-verified"></span></strong> <?= htmlspecialchars($curso['estado']) ?></p>
+                            </div>
+                            <hr>
+                            <div class="acciones">
+                                <a class="btn-ver" href="/profesor/curso/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-text_snippet"></span> Ver Curso</a>
+                                <a class="btn-agregar-leccion" href="/profesor/curso/eliminar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-post_add"></span> Agregar leccion</a>
+                            </div>
                         </div>
-                        <div class="tarjeta-body">
-                            <p><strong><span class="icon-calendar_today"> </span>Inicio </strong> <small class="fecha-inicio"><?= htmlspecialchars($curso['fecha_inicio']) ?></small> </p>
-                            <p><strong><span class="icon-date_range"> </span>Fin </strong> <small class="fecha-fin"><?= htmlspecialchars($curso['fecha_fin']) ?></small></p>
-                            <p><strong><span class="icon-verified"></span></strong> <?= htmlspecialchars($curso['estado']) ?></p>
-                        </div>
-                        <hr>
-                        <div class="acciones">
-                            <a class="btn-ver" href="/profesor/curso/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-text_snippet"></span> Ver Curso</a>
-                            <a class="btn-agregar-leccion" href="/profesor/curso/eliminar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-post_add"></span> Agregar leccion</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            
-                <?php else: ?>
-                    <p>No tienes cursos asignados aún.</p>
-                <?php endif; ?>
+                    <?php endforeach; ?>
+                
+                    <?php else: ?>
+                        <p>No tienes cursos asignados aún.</p>
+                    <?php endif; ?>
 
+                </div>
+                
             </div>
 
 

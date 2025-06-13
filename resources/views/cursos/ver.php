@@ -131,16 +131,14 @@
                         
                         <h4>Profesor asignado</h4>
                         <?php if (!empty($profesorAsignado) && !empty($profesorDatos)): ?>
-                            
-                            <ul>
-                                <li><strong>Nombre:</strong> <?= htmlspecialchars($profesorAsignado['nombre'] ?? '') ?></li>
-                                <li><strong>Correo:</strong> <?= htmlspecialchars($profesorAsignado['email'] ?? '') ?></li>
-                                <li><strong>Especialidad:</strong> <?= htmlspecialchars($profesorDatos['especialidad']) ?></li>
-                                <li><strong>Título Académico:</strong> <?= htmlspecialchars($profesorDatos['titulo_academico']) ?></li>
-                                <li><strong>Años de experiencia:</strong> <?= htmlspecialchars($profesorDatos['experiencia_anios']) ?></li>
-                                <li><strong>Fecha de Ingreso:</strong> <?= date('d/m/Y', strtotime($profesorDatos['fecha_ingreso'])) ?></li>
-                                <li><strong>Biografía:</strong> <br><?= nl2br(htmlspecialchars($profesorDatos['biografia'])) ?></li>
-                            </ul>
+                            <p><strong> <span class="icon-person_outline"></span> </strong> <?= htmlspecialchars($profesorAsignado['nombre'] ?? '') ?></p>
+                            <p><strong><span class="icon-email"></span></strong> <?= htmlspecialchars($profesorAsignado['email'] ?? '') ?></p>
+                            <p><strong>Especialidad:</strong> <?= htmlspecialchars($profesorDatos['especialidad']) ?></p>
+                            <p><strong><span class="icon-featured_play_list"></span></strong> <?= htmlspecialchars($profesorDatos['titulo_academico']) ?></p>
+                            <p><strong>Años de experiencia:</strong> <?= htmlspecialchars($profesorDatos['experiencia_anios']) ?></p>
+                            <p><strong>Fecha de Ingreso:</strong> <?= date('d/m/Y', strtotime($profesorDatos['fecha_ingreso'])) ?></p>
+                            <p><strong>Biografía:</strong> <br><?= nl2br(htmlspecialchars($profesorDatos['biografia'])) ?></p>
+                    
                         <?php else: ?>
                             <p>No hay un profesor asignado actualmente a este curso.</p>
                         <?php endif; ?>
