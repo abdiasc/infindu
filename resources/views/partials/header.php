@@ -1,7 +1,12 @@
-<header>
-    <a style="color: #fff; text-decoration:none" href="/"><h1>INFINDU</h1></a> 
-    <nav>
-        <ul style="display: flex; align-items: center; list-style: none; margin: 0; padding: 0;">
+
+
+<header class="main-header">
+    <div class="logo">
+        <a href="/">INFINDU</a>
+    </div>
+
+    <nav class="main-nav">
+        <ul>
             <li><a href="/cursos">Cursos</a></li>
             <li><a href="/nosotros">Nosotros</a></li>
 
@@ -19,12 +24,16 @@
                     }
                 ?>
 
-                     <?php if (!empty($profesor['avatar'])): ?>
-                        <li style="margin:0px;">
-                            <img style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;" src="../../../public/<?= htmlspecialchars($profesor['avatar']) ?>" alt="Avatar" width="120">
-                        </li>
-                    <?php endif; ?>
-
+                <?php if (!empty($profesor['avatar'])): ?>
+                    <li class="avatar-li">
+                        <img src="../../../public/<?= htmlspecialchars($profesor['avatar']) ?>" alt="Avatar" class="avatar-img">
+                    </li>
+                <?php endif; ?>
+                <?php if (!empty($estudiante['avatar'])): ?>
+                    <li class="avatar-li">
+                        <img src="../../../public/<?= htmlspecialchars($estudiante['avatar']) ?>" alt="Avatar" class="avatar-img">
+                    </li>
+                <?php endif; ?>
 
                 <li><strong><?= htmlspecialchars($_SESSION['usuario_nombre']) ?></strong></li>
                 <li><a href="/logout">Cerrar sesión</a></li>
