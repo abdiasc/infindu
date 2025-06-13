@@ -647,3 +647,40 @@ header{
     margin-bottom: 20px;
 }
 
+.cursos-asignados{
+    background-color: #1e1e2f;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px; 
+    margin-top: 20px;
+}
+.cursos-asignados h2{
+    color: #ffffff;
+}
+
+.curso-tarjeta{
+    width: 30%;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 10px;
+}
+.curso-tarjeta .tarjeta-head p{
+    font-size: 0.7rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    background-color: #af0446;
+    padding: 2px;
+    border-radius: 5px;
+    width: fit-content;
+    border: none;
+}
+.curso-tarjeta h3{
+    font-size: 1rem;
+    margin-bottom: 10px;
+    
+}
+.curso-tarjeta .tarjeta-head img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

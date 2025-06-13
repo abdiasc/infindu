@@ -10,21 +10,29 @@ class ProfesorController extends Controller {
         $this->view('profesores/index', ['title' => 'Profesores']);
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
         Auth::requireRole('profesor');
 
         $usuario_id = $_SESSION['usuario_id'] ?? null;
+
+        // Obtener datos del profesor
         $profesor = Profesor::obtenerPorUsuario($usuario_id);
 
-        // Si no tiene datos completos (puedes definir qué campos son obligatorios)
+        // Verificar si el perfil está incompleto
         $mostrarAlerta = false;
         if (!$profesor || empty($profesor['especialidad'])) {
             $mostrarAlerta = true;
         }
 
+        // Obtener cursos asignados al profesor
+        $cursosAsignados = Profesor::obtenerCursosAsignados($usuario_id);
+
+        // Enviar datos a la vista
         $this->view('profesores/dashboard', [
             'profesor' => $profesor,
             'mostrarAlerta' => $mostrarAlerta,
+            'cursosAsignados' => $cursosAsignados
         ]);
     }
 }

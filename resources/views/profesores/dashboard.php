@@ -12,6 +12,29 @@
                     <a href="/perfil/completar" style="text-decoration: underline; color: #856404;">Haz clic aquí para completarlo</a>.
                 </div>
             <?php endif; ?>
+
+            <div class="cursos-asignados">
+                <h2>Cursos Asignados</h2>
+                <?php if (!empty($cursosAsignados)): ?>
+                    <?php foreach ($cursosAsignados as $curso): ?>
+                    <div class="curso-tarjeta">
+                        <div class="tarjeta-head">
+                            <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
+                            <p><?= htmlspecialchars($curso['nivel']) ?></p>
+                            <img src="/public/<?= htmlspecialchars($curso['imagen_portada']) ?>" alt="Portada" class="img-curso-portada">
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            
+                <?php else: ?>
+                    <p>No tienes cursos asignados aún.</p>
+                <?php endif; ?>
+
+            </div>
+
+
+            
+
             
         </div>
     </div>

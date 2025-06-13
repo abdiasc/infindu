@@ -26,4 +26,21 @@ class Profesor {
             $datos['biografia'] ?? null,
         ]);
     }
+
+
+    public static function obtenerCursosAsignados($usuario_id) {
+    $db = Database::getConnection();
+
+    // Consultamos los cursos asignados al profesor usando profesor_curso
+    $stmt = $db->prepare("
+        SELECT c.* FROM cursos c
+        INNER JOIN profesor_curso pc ON c.id = pc.curso_id
+        WHERE pc.profesor_id = ?
+    ");
+    $stmt->execute([$usuario_id]);
+    return $stmt->fetchAll();
+}
+
+    
+
 }
