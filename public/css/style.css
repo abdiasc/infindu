@@ -596,14 +596,6 @@ header{
 }
 
 
-
-
-
-
-
-
-
-
 .roles {
     margin-bottom: 0px;
 }
@@ -683,4 +675,53 @@ header{
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.tarjeta-body p{
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;
+    font-size: small;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    width: fit-content;
+}
+.fecha-inicio{
+    color: #ffffff;
+    font-size: 12px;
+    background-color: #0f6acc;
+    padding: 3px 5px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.fecha-fin{
+    color: #ffffff;
+    font-size: 12px;
+    background-color: #2670be;
+    padding: 3px 5px;
+    border-radius: 5px;
+    width: fit-content;
+}
+.acciones{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.btn-ver{
+    background-color: #00a77d;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}
+.btn-agregar-leccion{
+    background-color: #75015c;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
 }
