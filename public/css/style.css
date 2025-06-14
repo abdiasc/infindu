@@ -60,6 +60,7 @@ header{
     width: 80%;
     background-color: #444;
     padding: 20px;
+    border-radius: 0px 20px 20px 0px;
 }
 .contenido ul li a{
     color: #fafafa;
@@ -137,12 +138,12 @@ header{
     background-color: #1e1e2f;
     color: #fff;
     padding: 20px;
-    height: 100vh;
     left: 0;
     top: 0;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     font-family: 'Segoe UI', sans-serif;
+    border-radius: 20px 0px 0px 20px;
 }
 
 /* Título */
@@ -925,3 +926,6 @@ footer{
     object-fit: cover;
     border: 2px solid white;
 }
+
+
+
