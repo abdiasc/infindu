@@ -9,21 +9,14 @@
                 </div>
             <?php endif; ?>
         </div>
-        <div class="datos-perfil">
-            <ul>
-                <li><strong>Especialidad:</strong> <?= htmlspecialchars($profesor['especialidad']) ?></li>
-                <li><strong>Título Académico:</strong> <?= htmlspecialchars($profesor['titulo_academico'] ?? 'No especificado') ?></li>
-                <li><strong>Años de experiencia:</strong> <?= htmlspecialchars($profesor['experiencia_anios'] ?? 'No especificado') ?></li>
-                <li><strong>Fecha de ingreso:</strong> <?= htmlspecialchars($profesor['fecha_ingreso'] ?? 'No especificado') ?></li>
-                <li><strong>Biografía:</strong> <br><?= nl2br(htmlspecialchars($profesor['biografia'] ?? 'No especificada')) ?></li>
-            </ul>
-        </div>
+        
         
     <?php else: ?>
         <p>No se encontró información de perfil para este usuario.</p>
     <?php endif; ?>
-    <ul>
-        <li><a href="/admin"> <span class="icon-dashboard"></span> Perfil</a></li>
+    <ul class="menu">
+        <li><a href="/profesor"> <span class="icon-dashboard"></span> Dashboard</a></li>
+        <li><a href="/profesor/perfil"> <span class="icon-dashboard"></span> Perfil</a></li>
         <li><a href="/admin/cursos"> <span class="icon-school"></span>Mis cursos</a></li>
         <li><a href="/admin/reportes"> <span class="icon-assignment"></span> Reportes</a></li>
         <li><a href="/admin/configuracion"> <span class="icon-settings"></span> Configuración</a></li>

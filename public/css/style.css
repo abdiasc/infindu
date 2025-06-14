@@ -29,31 +29,70 @@ header ul li{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-}
-.container{
+
+/* Login */
+.container-login{
     width: 30%;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
+    background-color:var(--color-secundario);
+    border-radius: 20px;
+    box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.5);
 }
-.container form input{
+.container-login form{
+    margin-top: 20px;
+}
+
+.container-login form input{
     width: 95%;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-color: #566169;
+    border: none;
+    color: #cfcbcb;
+    border-radius: 10px;
 }
-.btn-iniciar{
+.container-login form input:focus{
+    outline: none;
+    border: none;
+    color: #ffc107;
+}
+.container-login form a{
+    color: #fafafa;
+
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.container-login .btn-iniciar{
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: ease-in-out 0.3s;
+
 }
+.container-login .btn-iniciar:hover{
+    background-color: #265829;
+
+}
+
+.botonera{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+
+
+
+
+
+
 .contenido{
     padding: 20px;
     display: flex;
@@ -61,13 +100,16 @@ header{
 .contenido .sidebar{
     width: 20%;
     background-color: #333;
-    padding: 10px;
+    padding: 20px;
 }
 .contenido .panel{
     width: 80%;
     background-color: #444;
     padding: 20px;
     border-radius: 0px 20px 20px 0px;
+}
+.sidebar .menu{
+    margin-top: 20px;
 }
 .contenido ul li a{
     color: #fafafa;
@@ -576,10 +618,36 @@ header{
 .datos-perfil{
     background-color: #1e1e2f;
     color: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     margin-top: 20px;
 
+}
+.perfil-info h3{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #272525;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+.perfil-info p{
+    font-size: 14px;
+    color: #292727;
+    margin-bottom: 10px;
+    margin: 0px;
+}
+
+.datos-perfil ul{
+    padding: 0px;
+    margin: 0px;
+}
+.datos-perfil h3{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
 }
 .datos-perfil ul li{
     list-style: none;

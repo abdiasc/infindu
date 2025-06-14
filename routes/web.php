@@ -15,6 +15,8 @@ $router->post('registro/user', 'AuthController@registroAsignarRol');
 
 // Paneles de usuario
 $router->get('profesor', 'ProfesorController@dashboard');
+$router->get('/profesor/perfil', 'ProfesorController@perfil');
+
 $router->get('estudiante', 'EstudianteController@dashboard');
 
 // Rutas generales de recursos

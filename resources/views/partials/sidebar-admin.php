@@ -2,7 +2,7 @@
     <h2>Panel de Administración</h2>
     <p>Bienvenido, <?= htmlspecialchars($_SESSION['usuario_nombre']) ?> (Administrador)</p>
 
-    <ul>
+    <ul class="menu">
         <li><a href="/admin/usuarios"> <span class="icon-people_outline"></span> Usuarios</a></li>
         <li><a href="/admin/roles"> <span class="icon-dashboard"></span> Roles</a></li>
         <li><a href="/admin/permisos"> <span class="icon-assignment_turned_in"></span> Permisos</a></li>

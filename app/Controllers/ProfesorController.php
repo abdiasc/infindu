@@ -4,6 +4,7 @@ namespace App\Controllers;
 use Core\Controller;
 use App\Middleware\Auth;
 use App\Models\Profesor;
+use App\Models\User;
 
 class ProfesorController extends Controller {
     public function index() {
@@ -33,6 +34,24 @@ class ProfesorController extends Controller {
             'profesor' => $profesor,
             'mostrarAlerta' => $mostrarAlerta,
             'cursosAsignados' => $cursosAsignados
+        ]);
+    }
+    public function perfil()
+    {
+        Auth::requireRole('profesor');
+
+        $usuario_id = $_SESSION['usuario_id'] ?? null;
+
+        // Obtener datos del profesor
+        $profesor = Profesor::obtenerPorUsuario($usuario_id);
+        $usuario = User::buscarPorId($usuario_id);
+
+       
+        // Enviar datos a la vista
+        $this->view('profesores/perfil', [
+            'profesor' => $profesor,
+            'usuario' => $usuario,
+            'title' => 'Perfil del Profesor'
         ]);
     }
 }

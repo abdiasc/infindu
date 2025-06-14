@@ -22,7 +22,7 @@
         <p>No se encontró información de perfil para este usuario.</p>
     <?php endif; ?>
 
-    <ul>
+    <ul class="menu">
         <li><a href="/admin/cursos"> <span class="icon-school"></span>Mis cursos</a></li>
         <li><a href="/admin/reportes"> <span class="icon-assignment"></span> Reportes</a></li>
         <li><a href="/admin/configuracion"> <span class="icon-settings"></span> Configuración</a></li>
