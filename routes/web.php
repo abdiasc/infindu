@@ -83,3 +83,11 @@ $router->post('/perfil/guardar_estudiante', 'PerfilController@guardarEstudiante'
 $router->get('/error/403', 'ErrorController@error403');
 
 $router->get('/cursos/{id}', 'CursoController@verPublico');
+
+$router->get('/categorias', 'CategoriaController@index');
+$router->get('/categorias/crear', 'CategoriaController@create');
+$router->post('/categorias/guardar', 'CategoriaController@store');
+$router->get('/categorias/editar/{id}', 'CategoriaController@edit');   
+$router->post('/categorias/actualizar/{id}', 'CategoriaController@update');
+$router->get('/categorias/eliminar/{id}', 'CategoriaController@delete');   
+$router->get('/categorias/{id}', 'CategoriaController@verPublico');

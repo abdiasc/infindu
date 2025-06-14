@@ -20,7 +20,7 @@ class Permiso {
     public static function crear($nombre, $descripcion) {
         $db = Database::getConnection();
         $stmt = $db->prepare("INSERT INTO permisos (nombre, descripcion) VALUES (?, ?)");
-        return $stmt->execute([$nombre, $descripcion]);
+        return $stmt->execute([$nombre, $descripcion]); 
     }
 
     public static function actualizar($id, $nombre, $descripcion) {

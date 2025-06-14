@@ -4,6 +4,7 @@
 
     <ul class="menu">
         <li><a href="/admin/usuarios"> <span class="icon-people_outline"></span> Usuarios</a></li>
+        <li><a href="/categorias"> <span class="icon-category"></span> Categorías</a></li>
         <li><a href="/admin/roles"> <span class="icon-dashboard"></span> Roles</a></li>
         <li><a href="/admin/permisos"> <span class="icon-assignment_turned_in"></span> Permisos</a></li>
         <li><a href="/admin/cursos"> <span class="icon-school"></span> Cursos</a></li>

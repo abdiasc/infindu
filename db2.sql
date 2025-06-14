@@ -186,3 +186,10 @@ CREATE TABLE profesores (
 --ALTER TABLE profesores
 --ADD COLUMN avatar VARCHAR(255) AFTER fecha_ingreso;
 
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) UNIQUE,
+    color VARCHAR(20),
+    descripcion TEXT
+);
+

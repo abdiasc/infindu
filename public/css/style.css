@@ -1008,3 +1008,13 @@ footer{
     padding: 10px;
     border-radius: 10px;
 }
+input[type="color"] {
+  appearance: none;         /* Eliminar estilo nativo (opcional) */
+  -webkit-appearance: none; /* Para navegadores basados en WebKit */
+  border: none;
+  padding: 0;
+  width: 50px;
+  height: 40px;
+  cursor: pointer;
+  background: none;
+}
