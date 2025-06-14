@@ -38,8 +38,8 @@
                 <li><strong><?= htmlspecialchars($_SESSION['usuario_nombre']) ?></strong></li>
                 <li><a href="/logout">Cerrar sesión</a></li>
             <?php else: ?>
-                <li><a href="/login">Iniciar sesión</a></li>
-                <li><a href="/registro">Crear cuenta</a></li>
+                <li><a class="btn-iniciar-sesion" href="/login">Iniciar sesión</a></li>
+                <li><a class="btn-registrarse" href="/registro">Crear cuenta</a></li>
             <?php endif; ?>
         </ul>
     </nav>
