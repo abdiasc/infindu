@@ -31,12 +31,35 @@ class Categorias
         return $stmt->execute();
     }
 
-    public static function actualizar(int $id, string $nombre)
+    public static function actualizar(int $id, string $nombre, string $color = null, string $descripcion = null)
     {
         $db = Database::getConnection();
-        $stmt = $db->prepare("UPDATE categorias SET nombre = :nombre WHERE id = :id");
-        $stmt->bindValue(':nombre', $nombre, PDO::PARAM_STR);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        
+        // Construir dinámicamente la consulta SQL
+        $campos = ['nombre = :nombre'];
+        $parametros = [
+            ':nombre' => $nombre,
+            ':id' => $id
+        ];
+
+        if ($color !== null) {
+            $campos[] = 'color = :color';
+            $parametros[':color'] = $color;
+        }
+
+        if ($descripcion !== null) {
+            $campos[] = 'descripcion = :descripcion';
+            $parametros[':descripcion'] = $descripcion;
+        }
+
+        $sql = "UPDATE categorias SET " . implode(', ', $campos) . " WHERE id = :id";
+        $stmt = $db->prepare($sql);
+
+        // Asignar los valores
+        foreach ($parametros as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+
         return $stmt->execute();
     }
 

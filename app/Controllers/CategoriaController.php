@@ -52,10 +52,10 @@ class CategoriaController extends Controller
         Auth::requireRole('administrador');
         $categoria = Categorias::obtenerPorId((int)$id);
         if (!$categoria) {
-            header('Location: /admin/categorias');
+            header('Location: /categorias');
             exit;
         }
-        $this->view('categorias/edit', [
+        $this->view('categorias/editar', [
             'title' => 'Editar Categoría',
             'categoria' => $categoria
         ]);
@@ -66,11 +66,13 @@ class CategoriaController extends Controller
         Auth::requireRole('administrador');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = trim($_POST['nombre'] ?? '');
-
+            $color = trim($_POST['color'] ?? '');
+            $descripcion = trim($_POST['descripcion'] ?? '');
+            // Validar que el nombre no esté vacío
             if ($nombre !== '') {
-                Categorias::actualizar((int)$id, $nombre);
+                Categorias::actualizar((int)$id, $nombre, $color, $descripcion);
             }
-            header('Location: /admin/categorias');
+            header('Location: /categorias');
             exit;
         }
     }
@@ -79,7 +81,7 @@ class CategoriaController extends Controller
     {
         Auth::requireRole('administrador');
         Categorias::eliminar((int)$id);
-        header('Location: /admin/categorias');
+        header('Location: /categorias');
         exit;
     }
 }

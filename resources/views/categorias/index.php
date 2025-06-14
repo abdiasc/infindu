@@ -4,7 +4,7 @@
 <div class="panel">
         <div class="admin-usuarios">
             <h2>Gestion de categorias</h2>
-            <a href="/categorias/crear" style="display:inline-block; margin-bottom: 10px; background:#28a745; color:white; padding:5px 10px; text-decoration:none; border-radius:5px;"><span class="icon-add"></span> Nuevo Permiso</a>
+            <a href="/categorias/crear" style="display:inline-block; margin-bottom: 10px; background:#28a745; color:white; padding:5px 10px; text-decoration:none; border-radius:5px;"><span class="icon-add"></span> Nueva categoria</a>
 
             <table class="tabla-usuarios">
                 <thead style="background-color: #f8f8f8;">
