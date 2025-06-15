@@ -1,5 +1,4 @@
 <div class="container-cursos">
-    <h1><?= htmlspecialchars($title) ?></h1>
     <div class="cursos-elementos">
         <?php
                 // Función para limitar la descripción a 20 palabras
@@ -12,27 +11,26 @@
             }
         ?>
 
-
-
-        <?php if (!empty($cursos)): ?>
+        <div class="tarjetas">
+            <?php if (!empty($cursos)): ?>
             <?php foreach ($cursos as $curso): ?>
-                <article class="curso">
-                    <?php if (!empty($curso['imagen_portada'])): ?>
-                        <img src="public/<?= htmlspecialchars($curso['imagen_portada']) ?>" alt="Portada" class="img-portada">
-                    <?php endif; ?>
-                    <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
-                    
-                    <?= nl2br(htmlspecialchars(limitarPalabras($curso['descripcion'], 10))) ?></p>
-                    <small>Creado por: <?= htmlspecialchars($curso['creador']) ?> el <?= htmlspecialchars($curso['fecha_creacion']) ?></small>
-                    <div class="acciones">
-                        <a href="/cursos/<?= $curso['id'] ?>">Ver curso</a>
+                <div class="tar-curso" style="background-image: url('/public<?= htmlspecialchars($curso['imagen_portada']) ?>');">
+                    <div class="overlay"></div>
+                    <div class="contenido">
+                        <p class="nivel"><?= htmlspecialchars($curso['nivel']) ?></p>
+                        <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
+                        <p><strong><span class="icon-verified"></span></strong> <?= htmlspecialchars($curso['estado']) ?></p>
+                        <p><a href="/cursos/<?= $curso['id'] ?>"> <span class="icon-text_snippet"></span> Ver Curso</a></p>
+                        <p><a href="/profesor/curso/<?= $curso['id'] ?>/estudiantes">Estudiantes</a></p>
                     </div>
-                        
-                </article>
+                </div>
             <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay cursos disponibles.</p>
-        <?php endif; ?>
+                
+            <?php else: ?>
+                <p>No tienes cursos asignados aún.</p>
+            <?php endif; ?>
+        </div>
+
     </div>
     
 </div>

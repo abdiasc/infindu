@@ -137,7 +137,9 @@ class AdminController extends Controller {
         $this->view('admin/crear_curso');
     }
 
-    public function crearCurso() {
+    
+    public function crearCurso()
+    {
         Auth::requireRole('administrador');
 
         $nombre = trim($_POST['nombre']);
@@ -167,6 +169,53 @@ class AdminController extends Controller {
             }
 
             if (move_uploaded_file($_FILES['imagen_portada']['tmp_name'], $rutaDestino)) {
+                // Redimensionar imagen a 800x450 px
+                list($anchoOriginal, $altoOriginal, $tipo) = getimagesize($rutaDestino);
+
+                $anchoNuevo = 800;
+                $altoNuevo = 450;
+
+                $imagenOriginal = null;
+                switch ($tipo) {
+                    case IMAGETYPE_JPEG:
+                        $imagenOriginal = imagecreatefromjpeg($rutaDestino);
+                        break;
+                    case IMAGETYPE_PNG:
+                        $imagenOriginal = imagecreatefrompng($rutaDestino);
+                        break;
+                    case IMAGETYPE_WEBP:
+                        $imagenOriginal = imagecreatefromwebp($rutaDestino);
+                        break;
+                    default:
+                        unlink($rutaDestino); // Eliminar si es tipo no soportado
+                        $this->view('admin/crear_curso', ['error' => 'Formato de imagen no soportado. Usa JPG, PNG o WEBP.']);
+                        return;
+                }
+
+                $imagenRedimensionada = imagecreatetruecolor($anchoNuevo, $altoNuevo);
+                imagecopyresampled(
+                    $imagenRedimensionada,
+                    $imagenOriginal,
+                    0, 0, 0, 0,
+                    $anchoNuevo, $altoNuevo,
+                    $anchoOriginal, $altoOriginal
+                );
+
+                switch ($tipo) {
+                    case IMAGETYPE_JPEG:
+                        imagejpeg($imagenRedimensionada, $rutaDestino, 90);
+                        break;
+                    case IMAGETYPE_PNG:
+                        imagepng($imagenRedimensionada, $rutaDestino);
+                        break;
+                    case IMAGETYPE_WEBP:
+                        imagewebp($imagenRedimensionada, $rutaDestino);
+                        break;
+                }
+
+                imagedestroy($imagenOriginal);
+                imagedestroy($imagenRedimensionada);
+
                 $imagenRuta = '/uploads/cursos/' . $nombreArchivo;
             } else {
                 $this->view('admin/crear_curso', ['error' => 'Error al subir la imagen.']);

@@ -193,3 +193,4 @@ CREATE TABLE categorias (
     descripcion TEXT
 );
 
+

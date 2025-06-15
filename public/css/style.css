@@ -716,91 +716,9 @@ header ul li{
     margin-bottom: 20px;
 }
 
-.cursos-asignados{
-    background-color: #1e1e2f;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 10px; 
-    margin-top: 20px;
-}
-.cursos-asignados h2{
-    color: #ffffff;
-}
 
-.curso-tarjeta{
-    width: 30%;
-    background-color: #007bff;
-    padding: 10px;
-    border-radius: 10px;
-}
-.curso-tarjeta .tarjeta-head p{
-    font-size: 0.7rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-    background-color: #af0446;
-    padding: 2px;
-    border-radius: 5px;
-    width: fit-content;
-    border: none;
-}
-.curso-tarjeta h3{
-    font-size: 1rem;
-    margin-bottom: 10px;
-    
-}
-.curso-tarjeta .tarjeta-head img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
 
-.tarjeta-body p{
-    margin: 0px;
-    padding: 0px;
-    color: #ffffff;
-    font-size: small;
-    padding: 5px;
-    border-radius: 5px;
-    width: fit-content;
-}
-.fecha-inicio{
-    color: #ffffff;
-    font-size: 12px;
-    background-color: #0f6acc;
-    padding: 3px 5px;
-    border-radius: 5px;
-    width: fit-content;
-}
 
-.fecha-fin{
-    color: #ffffff;
-    font-size: 12px;
-    background-color: #2670be;
-    padding: 3px 5px;
-    border-radius: 5px;
-    width: fit-content;
-}
-.acciones{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-.btn-ver{
-    background-color: #00a77d;
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-}
-.btn-agregar-leccion{
-    background-color: #75015c;
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 12px;
-}
 .info-tarjeta{
     display: flex;
     justify-content: space-between;
@@ -853,17 +771,19 @@ header ul li{
 /* CURSOS HOME */
 .container-cursos{
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #fefeff;
     color: #242222;
     border-radius: 10px;
+    width: 84.4%;
+    margin-top: 20px;
 }
 .container-cursos .cursos-elementos{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
-    padding: 20px;
+    padding: 0px;
 
 }
 .curso{
@@ -1023,6 +943,7 @@ input[type="color"] {
 
 
 
+
 .tarjetas-cursos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1077,4 +998,98 @@ input[type="color"] {
     padding: 3px 6px;
     border-radius: 5px;
     pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+.cursos{
+    background-color: #1e1e2f;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px; 
+}
+.tarjetas{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+.tar-curso {
+    position: relative;
+    width: 248px;
+    height: 148px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Fondo oscuro encima de la imagen */
+.tar-curso .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7); /* Puedes ajustar opacidad aquí */
+    z-index: 1;
+}
+.tar-curso .overlay:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Contenido encima del overlay */
+.tar-curso .contenido {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-between
+
+
+}
+.tar-curso .contenido p{
+    padding: 0px;
+    margin: 0px;
+}
+.tar-curso .contenido p a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    background-color: #082bc7;
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+/* Texto */
+.tar-curso .contenido h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    
+}
+
+.tar-curso .contenido .nivel {
+    margin: 0 0 0 0;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    color: #ffffff;
+    padding: 5px;
+    background-color: #85002c;
 }

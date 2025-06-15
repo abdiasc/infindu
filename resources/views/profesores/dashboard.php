@@ -13,27 +13,19 @@
                 </div>
             <?php endif; ?>
 
-            <div class="cursos-asignados">
+            <div class="cursos">
                 <h2>Cursos Asignados</h2>
-                <div class="tarjetas-cursos">
+                <div class="tarjetas">
                     <?php if (!empty($cursosAsignados)): ?>
                     <?php foreach ($cursosAsignados as $curso): ?>
-                        <div class="curso-tarjeta">
-                            <div class="tarjeta-head">
+                        <div class="tar-curso" style="background-image: url('/public<?= htmlspecialchars($curso['imagen_portada']) ?>');">
+                            <div class="overlay"></div>
+                            <div class="contenido">
+                                <p class="nivel"><?= htmlspecialchars($curso['nivel']) ?></p>
                                 <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
-                                <p><?= htmlspecialchars($curso['nivel']) ?></p>
-                                <img src="/public/<?= htmlspecialchars($curso['imagen_portada']) ?>" alt="Portada" class="img-curso-portada">
-                            </div>
-                            <div class="tarjeta-body">
-                                <p><strong><span class="icon-calendar_today"> </span>Inicio </strong> <small class="fecha-inicio"><?= htmlspecialchars($curso['fecha_inicio']) ?></small> </p>
-                                <p><strong><span class="icon-date_range"> </span>Fin </strong> <small class="fecha-fin"><?= htmlspecialchars($curso['fecha_fin']) ?></small></p>
                                 <p><strong><span class="icon-verified"></span></strong> <?= htmlspecialchars($curso['estado']) ?></p>
-                            </div>
-                            <hr>
-                            <div class="acciones">
-                                <a class="btn-ver" href="/profesor/curso/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-text_snippet"></span> Ver Curso</a>
-                                <a href="/profesor/curso/<?= $curso['id'] ?>/estudiantes">Ver Estudiantes</a>
-                                <a class="btn-agregar-leccion" href="/profesor/curso/eliminar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-post_add"></span> Agregar leccion</a>
+                                <p><a href="/profesor/curso/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-text_snippet"></span> Ver Curso</a></p>
+                                <p><a href="/profesor/curso/<?= $curso['id'] ?>/estudiantes">Estudiantes</a></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
