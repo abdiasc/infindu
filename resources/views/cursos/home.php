@@ -21,7 +21,7 @@
                         <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
                         <p><strong><span class="icon-verified"></span></strong> <?= htmlspecialchars($curso['estado']) ?></p>
                         <p><a href="/cursos/<?= $curso['id'] ?>"> <span class="icon-text_snippet"></span> Ver Curso</a></p>
-                        <p><a href="/profesor/curso/<?= $curso['id'] ?>/estudiantes">Estudiantes</a></p>
+                        <p><a href="#">Inscribirme</a></p>
                     </div>
                 </div>
             <?php endforeach; ?>
