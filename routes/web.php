@@ -18,6 +18,7 @@ $router->get('profesor', 'ProfesorController@dashboard');
 $router->get('/profesor/perfil', 'ProfesorController@perfil');
 
 $router->get('estudiante', 'EstudianteController@dashboard');
+$router->get('/estudiante/perfil', 'EstudianteController@perfil');
 
 // Rutas generales de recursos
 $router->get('users', 'UserController@index');
@@ -91,3 +92,11 @@ $router->get('/categorias/editar/{id}', 'CategoriaController@edit');
 $router->post('/categorias/actualizar/{id}', 'CategoriaController@update');
 $router->get('/categorias/eliminar/{id}', 'CategoriaController@delete');   
 $router->get('/categorias/{id}', 'CategoriaController@verPublico');
+
+
+// /routes.php
+$router->get('/inscripciones/formulario', 'InscripcionController@formulario');
+$router->post('/inscripciones/inscribir', 'InscripcionController@inscribir');
+
+$router->get('/estudiante/cursos', 'PerfilController@cursosInscritos');
+$router->get('/profesor/curso/{id}/estudiantes', 'CursoController@verEstudiantes');

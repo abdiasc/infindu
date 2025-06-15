@@ -32,6 +32,7 @@
                             <hr>
                             <div class="acciones">
                                 <a class="btn-ver" href="/profesor/curso/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-text_snippet"></span> Ver Curso</a>
+                                <a href="/profesor/curso/<?= $curso['id'] ?>/estudiantes">Ver Estudiantes</a>
                                 <a class="btn-agregar-leccion" href="/profesor/curso/eliminar/<?= htmlspecialchars($curso['id']) ?>"> <span class="icon-post_add"></span> Agregar leccion</a>
                             </div>
                         </div>

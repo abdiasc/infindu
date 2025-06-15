@@ -7,7 +7,7 @@ use App\Models\Curso;
 use App\Models\User; // Asegúrate de importar el modelo Usuario
 use App\Models\Leccion;
 use App\Models\Profesor; // Asegúrate de importar el modelo Profesor
-
+use App\Models\Inscripcion;
 use App\Middleware\Auth;
 
 class CursoController extends Controller {
@@ -105,8 +105,28 @@ class CursoController extends Controller {
             exit;
         }
 
-    
+        public function verEstudiantes($cursoId)
+        {
+            Auth::requireRole('profesor');
 
+            $profesorId = $_SESSION['usuario_id'];
+            $db = \Core\Database::getConnection();
 
+            // Verificar que el profesor esté asignado al curso
+            $stmt = $db->prepare("SELECT 1 FROM profesor_curso WHERE profesor_id = :profesorId AND curso_id = :cursoId");
+            $stmt->bindValue(':profesorId', $profesorId, \PDO::PARAM_INT);
+            $stmt->bindValue(':cursoId', $cursoId, \PDO::PARAM_INT);
+            $stmt->execute();
 
+            if (!$stmt->fetch()) {
+                header('Location: /panel-profesor');
+                exit;
+            }
+
+            $estudiantes = Inscripcion::estudiantesPorCurso((int)$cursoId);
+            $this->view('cursos/estudiantes', [
+                'title' => 'Estudiantes Inscritos',
+                'estudiantes' => $estudiantes
+            ]);
+        }
 }

@@ -5,6 +5,8 @@ use Core\Controller;
 use App\Middleware\Auth;
 use App\Models\Estudiante;
 use App\Models\Profesor;
+use App\Models\Inscripcion;
+use App\Models\User;
 
 class PerfilController extends Controller {
 
@@ -262,5 +264,23 @@ class PerfilController extends Controller {
             'error' => 'La carrera es requerida.'
         ]);
     }
+
+
+    public function cursosInscritos()
+    {
+        Auth::requireRole('estudiante');
+
+        $usuario_id = $_SESSION['usuario_id'] ?? null;
+        $cursos = Inscripcion::cursosPorEstudiante($usuario_id);
+        $estudiante = Estudiante::obtenerPorUsuario($usuario_id);
+
+        $this->view('estudiante/cursos', [
+            'title' => 'Mis Cursos Inscritos',
+            'cursos' => $cursos,
+            'estudiante' => $estudiante //IMPORTANTE
+        ]);
+    }
+
+
 }
 

@@ -122,17 +122,17 @@ CREATE TABLE archivos_leccion (
 
 
 
---ALTER TABLE lecciones
---ADD descripcion_corta VARCHAR(255),
---ADD tipo_contenido ENUM('video', 'lectura', 'quiz', 'práctica') DEFAULT 'video',
---ADD recurso_adicional VARCHAR(255),
---ADD duracion_aproximada INT,
---ADD estado ENUM('borrador', 'publicada', 'oculta') DEFAULT 'publicada',
---ADD fecha_disponible DATE,
---ADD es_obligatoria BOOLEAN DEFAULT TRUE,
---ADD slug VARCHAR(255),
---ADD autor VARCHAR(100),
---ADD quiz_id INT;
+-- ALTER TABLE lecciones
+-- ADD descripcion_corta VARCHAR(255),
+-- ADD tipo_contenido ENUM('video', 'lectura', 'quiz', 'práctica') DEFAULT 'video',
+-- ADD recurso_adicional VARCHAR(255),
+-- ADD duracion_aproximada INT,
+-- ADD estado ENUM('borrador', 'publicada', 'oculta') DEFAULT 'publicada',
+-- ADD fecha_disponible DATE,
+-- ADD es_obligatoria BOOLEAN DEFAULT TRUE,
+-- ADD slug VARCHAR(255),
+-- ADD autor VARCHAR(100),
+-- ADD quiz_id INT;
 
 
 
@@ -140,12 +140,12 @@ CREATE TABLE archivos_leccion (
 
 INSERT INTO roles (nombre) VALUES ('administrador'), ('profesor'), ('estudiante');
 
---INSERT INTO permisos (nombre, descripcion) VALUES
---('crear_curso', 'Crear nuevos cursos'),
---('asignar_profesor', 'Asignar profesores a cursos'),
---('subir_archivo', 'Subir archivos a un curso'),
---('ver_curso', 'Ver contenido del curso'),
---('descargar_archivo', 'Descargar archivos del curso');
+-- INSERT INTO permisos (nombre, descripcion) VALUES
+-- ('crear_curso', 'Crear nuevos cursos'),
+-- ('asignar_profesor', 'Asignar profesores a cursos'),
+-- ('subir_archivo', 'Subir archivos a un curso'),
+-- ('ver_curso', 'Ver contenido del curso'),
+-- ('descargar_archivo', 'Descargar archivos del curso');
 
 
 
@@ -176,15 +176,15 @@ CREATE TABLE profesores (
 );
 
 
---ALTER TABLE profesores ADD biografia TEXT;
+-- ALTER TABLE profesores ADD biografia TEXT;
 
 
 
---ALTER TABLE estudiantes
---ADD COLUMN avatar VARCHAR(255) AFTER fecha_nacimiento;
+-- ALTER TABLE estudiantes
+-- ADD COLUMN avatar VARCHAR(255) AFTER fecha_nacimiento;
 
---ALTER TABLE profesores
---ADD COLUMN avatar VARCHAR(255) AFTER fecha_ingreso;
+-- ALTER TABLE profesores
+-- ADD COLUMN avatar VARCHAR(255) AFTER fecha_ingreso;
 
 CREATE TABLE categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
