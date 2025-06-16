@@ -17,7 +17,7 @@
     <ul class="menu">
         <li><a href="/profesor"> <span class="icon-dashboard"></span> Dashboard</a></li>
         <li><a href="/profesor/perfil"> <span class="icon-dashboard"></span> Perfil</a></li>
-        <li><a href="/admin/cursos"> <span class="icon-school"></span>Mis cursos</a></li>
+        <li><a href="/profesor/cursos"> <span class="icon-school"></span>Mis cursos</a></li>
         <li><a href="/admin/reportes"> <span class="icon-assignment"></span> Reportes</a></li>
         <li><a href="/admin/configuracion"> <span class="icon-settings"></span> Configuración</a></li>
     </ul>

@@ -5,6 +5,7 @@ use Core\Controller;
 use App\Middleware\Auth;
 use App\Models\Profesor;
 use App\Models\User;
+use App\Models\Curso;
 
 class ProfesorController extends Controller {
     public function index() {
@@ -54,4 +55,21 @@ class ProfesorController extends Controller {
             'title' => 'Perfil del Profesor'
         ]);
     }
+
+    public function misCursos() {
+        Auth::requireRole('profesor');
+
+        $usuario_id = $_SESSION['usuario_id'] ?? null;
+        $profesor = Profesor::obtenerPorUsuario($usuario_id);
+        $cursos = Profesor::obtenerCursosAsignados($usuario_id);
+
+        $this->view('profesores/cursos', [
+            'title' => 'Mis Cursos Asignados',
+            'profesor' => $profesor,
+            'cursos' => $cursos
+        ]);
+    }
+
+
+
 }

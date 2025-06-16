@@ -29,17 +29,29 @@ class Profesor {
 
 
     public static function obtenerCursosAsignados($usuario_id) {
-    $db = Database::getConnection();
+        $db = Database::getConnection();
 
-    // Consultamos los cursos asignados al profesor usando profesor_curso
-    $stmt = $db->prepare("
-        SELECT c.* FROM cursos c
-        INNER JOIN profesor_curso pc ON c.id = pc.curso_id
-        WHERE pc.profesor_id = ?
-    ");
-    $stmt->execute([$usuario_id]);
-    return $stmt->fetchAll();
-}
+        // Consultamos los cursos asignados al profesor usando profesor_curso
+        $stmt = $db->prepare("
+            SELECT c.* FROM cursos c
+            INNER JOIN profesor_curso pc ON c.id = pc.curso_id
+            WHERE pc.profesor_id = ?
+        ");
+        $stmt->execute([$usuario_id]);
+        return $stmt->fetchAll();
+    }
+
+    public static function estaAsignadoACurso($profesorId, $cursoId)
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT COUNT(*) FROM profesor_curso WHERE profesor_id = ? AND curso_id = ?");
+        $stmt->execute([$profesorId, $cursoId]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+
+
+
 
     
 

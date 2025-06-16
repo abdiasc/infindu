@@ -104,3 +104,8 @@ $router->get('/profesor/curso/{id}/estudiantes', 'CursoController@verEstudiantes
 
 $router->get('/curso/ver/{id}', 'CursoController@verContenido');
 $router->get('/curso/ver/leccion/{id}', 'LeccionController@ver');
+
+$router->get('/profesor/cursos', 'ProfesorController@misCursos');
+
+$router->get('/profesor/curso/crear-leccion/{id}', 'LeccionController@crearLeccion');
+$router->post('/profesor/curso/guardar-leccion/{id}', 'LeccionController@guardarLeccion');

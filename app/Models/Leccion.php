@@ -83,6 +83,18 @@ class Leccion {
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public static function crearLeccion($data)
+    {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("INSERT INTO lecciones (curso_id, titulo, contenido, video_url) VALUES (:curso_id, :titulo, :contenido, :video_url)");
+        $stmt->bindValue(':curso_id', $data['curso_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(':titulo', $data['titulo']);
+        $stmt->bindValue(':contenido', $data['contenido']);
+        $stmt->bindValue(':video_url', $data['video_url']);
+        $stmt->execute();
+    }
+
 
 }
 ?>

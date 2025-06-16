@@ -3,6 +3,8 @@ namespace App\Controllers;
 use Core\Controller;
 use App\Models\Leccion;
 use App\Models\Curso;
+use App\Models\Profesor;
+use App\Middleware\Auth;
 
 class LeccionController extends Controller {
 
@@ -110,6 +112,81 @@ class LeccionController extends Controller {
                 'leccionSiguiente' => $leccionSiguiente,
             ]);
         }
+
+        // Mostrar formulario de crear lección
+    public function crearLeccion($cursoId)
+    {
+        // Verifica que el usuario tenga el rol de profesor
+        Auth::requireRole('profesor');
+
+        $usuarioId = $_SESSION['usuario_id'] ?? null;
+
+        // Obtiene el perfil del profesor por su usuario_id
+        $profesor = Profesor::obtenerPorUsuario($usuarioId);
+        $curso = Curso::obtenerPorIdCursos($cursoId);
+
+        // Validación básica
+        if (!$profesor || !$curso) {
+            header('Location: /error/403');
+            exit;
+        }
+
+        // Validación: el usuario debe estar asignado como profesor de ese curso
+        if (!Profesor::estaAsignadoACurso($profesor['usuario_id'], $cursoId)) {
+            header('Location: /error/403');
+            exit;
+        }
+
+        // Mostrar formulario de crear lección
+        $this->view('lecciones/crear-leccion', [
+            'curso' => $curso
+        ]);
+    }
+
+
+
+
+
+
+        public function guardarLeccion()
+        {
+            Auth::requireRole('profesor');
+
+            $usuarioId = $_SESSION['usuario_id'] ?? null;
+            $profesor = Profesor::obtenerPorUsuario($usuarioId);
+
+            // Verifica que se reciban los datos del formulario
+            $cursoId = $_POST['curso_id'] ?? null;
+            $titulo = $_POST['titulo'] ?? '';
+            $descripcion = $_POST['descripcion'] ?? '';
+            $contenido = $_POST['contenido'] ?? '';
+
+            if (!$profesor || !$cursoId || !$titulo || !$contenido) {
+                die("Faltan datos obligatorios.");
+            }
+
+            // Verifica que el profesor esté asignado a este curso
+            if (!Profesor::estaAsignadoACurso($profesor['usuario_id'], $cursoId)) {
+                header('Location: /error/403');
+                exit;
+            }
+
+            // Guarda la lección
+            $exito = Leccion::crear([
+                'curso_id' => $cursoId,
+                'titulo' => $titulo,
+                'descripcion' => $descripcion,
+                'contenido' => $contenido
+            ]);
+
+            if ($exito) {
+                header("Location: /cursos/$cursoId");
+                exit;
+            } else {
+                die("Error al guardar la lección.");
+            }
+        }
+
 
 
 

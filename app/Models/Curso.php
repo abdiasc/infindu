@@ -71,6 +71,12 @@ class Curso {
         $stmt->execute([$curso_id]);
         return $stmt->fetch(); // solo debe haber uno por curso
     }
+    public static function estaAsignadoACurso($profesorId, $cursoId) {
+        $db = \Core\Database::getConnection();
+        $stmt = $db->prepare("SELECT COUNT(*) FROM profesor_curso WHERE profesor_id = ? AND curso_id = ?");
+        $stmt->execute([$profesorId, $cursoId]);
+        return $stmt->fetchColumn() > 0;
+    }
 
 
     
