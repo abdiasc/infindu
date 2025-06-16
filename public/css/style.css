@@ -960,6 +960,19 @@ input[type="color"] {
     transition: all 0.2s ease-in-out;
     background-color: #141414;
 }
+.tarjeta-curso p{
+    margin: 0px;
+    font-size: 14px;
+}
+
+.nivel{
+    background-color: #850049;
+    width: fit-content;
+    font-size: 12px;
+    padding: 0px 5px !important;
+    border-radius: 5px;
+    color: #ffffff !important;
+}
 
 .tarjeta-curso:hover {
     border-color: #007bff;
@@ -973,8 +986,7 @@ input[type="color"] {
 
 /* Tarjetas ya inscritas: visualmente distintas y no seleccionables */
 .tarjeta-curso.inscrito {
-    border-color: #888;
-    background-color: #2e2e2e;
+    background-color: #1f233f;
     cursor: not-allowed;
     opacity: 0.6;
     position: relative;
@@ -1101,4 +1113,28 @@ input[type="color"] {
     background-color: var(--color-secundario);
     padding: 10px 20px;
     border-radius: 10px;
+}
+
+.cursos-inscritos{
+    display: flex;
+}
+
+.cursos-items{
+    background-color: #007bff;
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    
+}
+.cursos-items h2{
+    font-size: 18px;
+    color: #ffffff;
+
+}
+.cursos-items p{
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;
+    font-size: 14px;
 }

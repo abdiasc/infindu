@@ -16,6 +16,8 @@
                              <?= $inscrito ? 'data-inscrito="1"' : '' ?>
                              <?= $inscrito ? 'style="pointer-events: none; opacity: 0.6;"' : '' ?>>
                             <h3><?= htmlspecialchars($curso['nombre']) ?></h3>
+                            <p class="nivel"><?= htmlspecialchars($curso['nivel'] ?? '') ?></p>
+                            <hr>
                             <p><?= htmlspecialchars($curso['descripcion'] ?? '') ?></p>
                             <p><strong>Duración:</strong> <?= htmlspecialchars($curso['duracion'] ?? '') ?></p>
                             <p><strong>Categoría:</strong> <?= htmlspecialchars($curso['categoria'] ?? '') ?></p>

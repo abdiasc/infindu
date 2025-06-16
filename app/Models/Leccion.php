@@ -55,5 +55,14 @@ class Leccion {
         $stmt = $db->prepare("DELETE FROM lecciones WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
+    public static function obtenerPorCurso($curso_id) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT * FROM lecciones WHERE curso_id = ? ORDER BY orden ASC");
+        $stmt->execute([$curso_id]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+
 }
 ?>

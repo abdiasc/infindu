@@ -100,3 +100,6 @@ $router->post('/inscripciones/inscribir', 'InscripcionController@inscribir');
 
 $router->get('/estudiante/cursos', 'PerfilController@cursosInscritos');
 $router->get('/profesor/curso/{id}/estudiantes', 'CursoController@verEstudiantes');
+
+
+$router->get('/curso/ver/{id}', 'CursoController@verContenido');

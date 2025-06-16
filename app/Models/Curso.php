@@ -54,6 +54,13 @@ class Curso {
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public static function obtenerPorIdCursos($id) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT * FROM cursos WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public static function obtenerProfesorAsignado($curso_id) {
         $db = Database::getConnection();
         $sql = "SELECT u.id AS usuario_id, u.nombre, u.email
@@ -92,6 +99,13 @@ class Curso {
             LEFT JOIN usuarios prof ON pc.profesor_id = prof.id
         ");
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public static function estaInscrito($usuario_id, $curso_id) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT * FROM estudiante_curso WHERE estudiante_id = ? AND curso_id = ?");
+        $stmt->execute([$usuario_id, $curso_id]);
+        return $stmt->fetch() !== false;
     }
 
 }

@@ -73,12 +73,4 @@ class Categorias
 }
 
 
-
-
-
-
-
-
-
-
 ?>

@@ -44,7 +44,7 @@ class Inscripcion
     public static function obtenerCursosActivos(): array
     {
         $db = Database::getConnection();
-        $stmt = $db->query("SELECT id, nombre, descripcion,duracion,categoria FROM cursos WHERE estado = 'activo'");
+        $stmt = $db->query("SELECT id, nombre, descripcion,duracion,categoria,nivel FROM cursos WHERE estado = 'activo'");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     // Para que el profesor vea a los estudiantes de su curso
