@@ -103,3 +103,4 @@ $router->get('/profesor/curso/{id}/estudiantes', 'CursoController@verEstudiantes
 
 
 $router->get('/curso/ver/{id}', 'CursoController@verContenido');
+$router->get('/curso/ver/leccion/{id}', 'LeccionController@ver');

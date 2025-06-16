@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use Core\Controller;
 use App\Models\Leccion;
+use App\Models\Curso;
 
 class LeccionController extends Controller {
 
@@ -72,5 +73,46 @@ class LeccionController extends Controller {
             $this->leccionModel->eliminar($id);
             header("Location: /lecciones/curso/" . $curso_id);
         }
-    }
+
+        public function ver($id)
+        {
+            if (!isset($_SESSION['usuario_id'])) {
+                header('Location: /login');
+                exit;
+            }
+
+            $usuarioId = $_SESSION['usuario_id'];
+
+            $leccion = Leccion::obtener($id);
+
+            if (!$leccion) {
+                header('Location: /error/403');
+                exit;
+            }
+
+            $cursoId = $leccion['curso_id'];
+
+            // Validar que el usuario esté inscrito en el curso de esta lección
+            if (!Curso::estaInscrito($usuarioId, $cursoId)) {
+                header('Location: /error/403');
+                exit;
+            }
+
+            $leccionAnterior = Leccion::obtenerAnterior($id, $cursoId);
+            $leccionSiguiente = Leccion::obtenerSiguiente($id, $cursoId);
+
+            $curso = Curso::obtenerPorIdCursos($cursoId);
+
+            $this->view('lecciones/ver', [
+                'leccion' => $leccion,
+                'curso' => $curso,
+                'leccionAnterior' => $leccionAnterior,
+                'leccionSiguiente' => $leccionSiguiente,
+            ]);
+        }
+
+
+
+    
+}
 ?>

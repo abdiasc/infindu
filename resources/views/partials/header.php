@@ -1,5 +1,3 @@
-
-
 <header class="main-header">
     <div class="logo">
         <a href="/">INFINDU</a>
@@ -28,8 +26,7 @@
                     <li class="avatar-li">
                         <img src="../../../public/<?= htmlspecialchars($profesor['avatar']) ?>" alt="Avatar" class="avatar-img">
                     </li>
-                <?php endif; ?>
-                <?php if (!empty($estudiante['avatar'])): ?>
+                <?php elseif (!empty($estudiante['avatar'])): ?>
                     <li class="avatar-li">
                         <img src="../../../public/<?= htmlspecialchars($estudiante['avatar']) ?>" alt="Avatar" class="avatar-img">
                     </li>

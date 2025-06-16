@@ -2,14 +2,13 @@
 <p><?= htmlspecialchars($curso['descripcion']) ?></p>
 
 <h3>Lecciones del curso</h3>
-<ul>
+
+<ul class="lista-lecciones">
     <?php foreach ($lecciones as $leccion): ?>
         <li>
-            <strong><?= htmlspecialchars($leccion['titulo']) ?></strong><br>
-            <?= nl2br(htmlspecialchars($leccion['contenido'])) ?><br>
-            <?php if ($leccion['url_video']): ?>
-                <a href="<?= htmlspecialchars($leccion['url_video']) ?>" target="_blank">Ver video</a>
-            <?php endif; ?>
+            <a href="/curso/ver/leccion/<?php echo $leccion['id']; ?>">
+                <?php echo htmlspecialchars($leccion['titulo']); ?>
+            </a>
         </li>
     <?php endforeach; ?>
 </ul>
